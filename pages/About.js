@@ -1,27 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/About.module.css'
+import QRCode from 'react-qr-code';
 
 const About = () => {
-    return <div className={styles.container}>
-        <h1 className={styles.center}>About Hunting Coder</h1>
-        <h2>Introduction</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, quidem? Minus, quas! Earum maxime dignissimos rem quisquam omnis voluptatem ab quis. Tempora iure iste asperiores dolores quia eligendi! Doloremque repellat repellendus deleniti est. Blanditiis officiis et explicabo dicta. Quod, blanditiis at similique enim deserunt labore nisi doloribus tempore nihil quam omnis magni ducimus natus sit vel, id reprehenderit nam non quo consectetur ipsa molestias nobis. </p>
-        <h2>Services Offered</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, quis. Saepe, blanditiis harum cum excepturi maiores atque mollitia quas itaque qui, exercitationem id quaerat magnam repellat quia fugiat hic iure sit vitae officiis eligendi.</p>
-        <p>We offer the following services</p>
-        <ul>
-            <li>Service 1</li>
-            <li>Service 1</li>
-            <li>Service 1</li>
-            <li>Service 1</li>
-            <li>Service 1</li>
-            <li>Service 1</li>
-            <li>Service 1</li>
-            <li>Service 1</li>
-        </ul>
-        <h2>Contact us</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos et animi harum assumenda necessitatibus explicabo nam, corporis deleniti, ab ad praesentium blanditiis iste saepe perferendis impedit architecto quia cupiditate? Accusantium est in inventore repellendus unde. Dolores labore deserunt corrupti fugiat ratione perspiciatis illo optio suscipit aliquid cumque nihil soluta earum, assumenda eligendi nulla sed molestias unde?</p>
-    </div>;
+    const [qrvalue, setqrvalue] = useState("https://walrus-app-yve6b.ondigitalocean.app/");
+    const[showqr,setshowqr]=useState(false);
+    return <>
+    <div className='h-[90vh] flex justify-center items-center flex-col'>
+    <button onClick={()=>{
+            setshowqr(!showqr);
+        }} className='px-4 py-2 rounded-full font-semibold border-2 border-gray-300 bg-purple-600 text-white hover:bg-purple-800'>
+       Show the qr code
+        </button>
+        {showqr&&<QRCode value={qrvalue} className='my-10'/>}
+    </div>
+        
+    </>;
 };
 
 export default About;
